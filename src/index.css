@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.active {
+    background: #444;
+    color: oklch(var(--p));
+}
