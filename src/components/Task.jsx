@@ -1,7 +1,7 @@
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { completeTask } from "../features/todoSlice";
+import { completeTask, deleteTask } from "../features/todoSlice";
 
 const Task = ({ id, name, isCompleted }) => {
   const dispatch = useDispatch()
@@ -9,6 +9,10 @@ const Task = ({ id, name, isCompleted }) => {
   const handleComplete = () => {
     dispatch(completeTask(id))
   }
+
+  const handleDelete = () => {
+    dispatch(deleteTask(id));
+  };
 
   return (
     <div className={`
@@ -25,7 +29,7 @@ const Task = ({ id, name, isCompleted }) => {
         <button type="button" className="p-1 bg-blue-500 text-white rounded-lg">
           <FaEdit size={25} />
         </button>
-        <button type="button" className="p-1 bg-red-500 text-white rounded-lg">
+        <button type="button" className="p-1 bg-red-500 text-white rounded-lg" onClick={handleDelete}>
           <AiFillDelete size={25} />
         </button>
       </div>

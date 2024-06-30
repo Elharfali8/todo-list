@@ -30,10 +30,14 @@ export const todoSlice = createSlice({
             } else (
                 state.completed = state.completed.filter((task) => task.id !== action.payload)
             )
-        }
+        },
+        deleteTask: (state, action) => {
+            const newList = state.list.filter((task) => task.id !== action.payload);
+            state.list = newList;
+          }
     }
 })
 
 
-export const {addTask, completeTask} = todoSlice.actions
+export const {addTask, completeTask, deleteTask} = todoSlice.actions
 export default todoSlice.reducer
