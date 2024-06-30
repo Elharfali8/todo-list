@@ -1,11 +1,22 @@
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { completeTask } from "../features/todoSlice";
 
-const Task = ({id, name, isCompleted}) => {
+const Task = ({ id, name, isCompleted }) => {
+  const dispatch = useDispatch()
+
+  const handleComplete = () => {
+    dispatch(completeTask(id))
+  }
+
   return (
-    <div className='w-full max-w-2xl py-3 px-2 flex items-center justify-between bg-primary rounded-lg '>
+    <div className={`
+      ${isCompleted ? 'bg-gray-400' : 'bg-primary'}
+      w-full max-w-2xl py-3 px-2 flex items-center justify-between  rounded-lg
+    `}>
       <div className='flex items-center gap-x-2 '>
-        <input type="checkbox" name="task" checked={isCompleted} />
+        <input type="checkbox" name="task" checked={isCompleted} onChange={handleComplete} />
         <label className="text-xl lg:text-2xl tracking-wide capitalize">
           {name}
         </label>
