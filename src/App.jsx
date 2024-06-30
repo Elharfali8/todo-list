@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 
 
 function App() {
-  const [navIsOpen, setNavIsOpen] = useState(true)
+  const [navIsOpen, setNavIsOpen] = useState(false)
   const [theme, setTheme] = useState('cupcake')
 
   useEffect(() => {
