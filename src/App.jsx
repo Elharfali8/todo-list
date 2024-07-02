@@ -1,12 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Navbar, Sidebar } from "./components"
+import { Navbar } from "./components"
 import Home from "./pages/Home"
 import { useEffect, useState } from "react"
+import Modal from "./components/Modal"
+import { editTask } from "./features/todoSlice"
+import { useDispatch, useSelector } from "react-redux"
 
 
 function App() {
-  const [navIsOpen, setNavIsOpen] = useState(false)
   const [theme, setTheme] = useState('cupcake')
+  const { modalOpen } = useSelector((store) => store.todo)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -16,14 +20,15 @@ function App() {
     setTheme((prevTheme) => (prevTheme === 'dracula' ? 'cupcake' : 'dracula'));
   };
 
-  const handleNav = () => {
-    setNavIsOpen((prev) => !prev)
+  const toggleModal = () => {
+    dispatch(editTask())
   }
+
 
   return (
     <BrowserRouter>
-      <Navbar navIsOpen={navIsOpen} theme={theme} toggleTheme={toggleTheme} handleNav={handleNav} />
-      <Sidebar navIsOpen={navIsOpen} handleNav={handleNav}  />
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
+      {modalOpen && <Modal toggleModal={toggleModal} />}
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>

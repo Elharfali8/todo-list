@@ -2,16 +2,12 @@ import { FaBars, FaTimes } from "react-icons/fa"
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 
-const Navbar = ({ navIsOpen, theme, toggleTheme, handleNav }) => {
+const Navbar = ({  theme, toggleTheme }) => {
   
   return (
       <nav className='w-full shadow h-20'>
       <div className="container mx-auto px-4 lg:px-2 xl:px-1 flex items-center justify-between h-full">
-        <div className="flex items-center justify-center">
-        <button type="button" className="flex items-center justify-center">
-              {navIsOpen ? <FaTimes size={27} onClick={handleNav} /> : <FaBars size={27} onClick={handleNav} />}
-          </button>
-        </div>
+        
               <div>
               <h1 className='text-primary text-3xl lg:text-4xl tracking-wider font-semibold'>TaskTracker</h1>
         </div>

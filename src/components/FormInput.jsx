@@ -22,7 +22,7 @@ const FormInput = () => {
   }
 
   return (
-    <label className="form-control w-full max-w-2xl">
+    <label className="form-control w-full max-w-2xl  z-10">
     <div className="label">
       <span className="text-sm lg:text-md">Add your task...</span>
     </div>
@@ -30,7 +30,7 @@ const FormInput = () => {
         <input
           type="text"
           placeholder="Type here"
-          className=" h-10 lg:h-12 w-full max-w-2xl bg-neutral-200 focus:outline-none rounded-xl placeholder:text-black pl-2 text-lg "
+          className=" h-10 lg:h-12 w-full max-w-2xl bg-neutral-200 focus:outline-none rounded-xl placeholder:text-black pl-2 text-lg tracking-wider"
           value={task}
           onChange={handleInput}
         />
